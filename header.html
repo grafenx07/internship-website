@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.top-bar {
+        background: #1a1a1a;
+        color: white;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+    .top-bar-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .top-bar-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        text-decoration: none;
+        padding: 2px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .top-bar-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .accessibility-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .font-size-control {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .font-button {
+        background: none;
+        border: 1px solid #ffffff40;
+        color: white;
+        padding: 2px 6px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .font-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.emblem-image {
+    width: 150%;
+    height: 150%;
+    object-fit: contain;
+}
+
+.header-text h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.header-text p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Navigation */
+.nav {
+    background: #1a2b5c;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    gap: 40px;
+    margin-right: auto; /* This moves the content to the left */
+    padding-right: 20px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    position: relative;
+    margin-left: 20px;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: #1a2b5c;
+    min-width: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 10px 0;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Search Section */
+.search-section {
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 250px; /* Even more compact */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 10px 0;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 13px;
+    width: 100%;
+    color: #333;
+}
+
+.search-button {
+    background: #1a2b5c;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-button:hover {
+    background: #2a3b6c;
+}
+
+/* Main Content Area */
+/* Main Container Layout */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    gap: 20px;
+    min-height: 600px;
+}
+
+/* Sidebars */
+.left-sidebar, .right-sidebar {
+    flex: 0 0 250px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar-card h3 {
+    color: #1e3c72;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ff6b35;
+}
+
+/* About Section Styles */
+.about-content p {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.about-links {
+    list-style: none;
+}
+
+.about-links li {
+    margin-bottom: 10px;
+}
+
+.about-links a {
+    color: #1a2b5c;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.about-links a:hover {
+    background: #f0f2f5;
+    color: #ff6b35;
+}
+
+/* News Section Styles */
+.news-list .news-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.news-list .news-item:last-child {
+    border-bottom: none;
+}
+
+.news-date {
+    color: #ff6b35;
+    font-size: 12px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.news-list h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #1a2b5c;
+}
+
+.news-list p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Main Content Area Styles */
+.main-content-area {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        grid-template-columns: 200px 1fr 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .left-sidebar,
+    .right-sidebar {
+        order: 2;
+    }
+    
+    .main-content-area {
+        order: 1;
+    }
+}
+/* Responsive */
+/* Update responsive styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .nav-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger-menu {
+        margin: 10px 0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search-input {
+        margin-bottom: 10px;
+    }
+
+    .main-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .left-sidebar, .right-sidebar {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+/* Chatbot Widget Styles */
+.chatbot-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: auto;
+    background: none;
+    z-index: 1000;
+}
+
+.chatbot-header {
+    background: #1e3c72;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.chatbot-toggle {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+.chatbot-content {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    height: 400px;
+    width: 300px;
+    display: none; /* This is the default state */
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.chatbot-content.active {
+    display: flex; /* This will show the chat when active */
+}
+
+.chat-header {
+    background: #1e3c72;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-title {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.close-chat:hover {
+    opacity: 1;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.message.bot {
+    background: #f0f2f5;
+    margin-right: auto;
+}
+
+.message.user {
+    background: #1e3c72;
+    color: white;
+    margin-left: auto;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    background: #1e3c72;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+    background: #2a5298;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header - Department of Information Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="header-styles.css">
+</head>
+<body>
+
+
+<!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <a href="#login" class="top-bar-item">
+                <i class="fas fa-user"></i>
+                LOGIN
+            </a>
+            <a href="#khasi" class="top-bar-item">
+                KHASI
+            </a>
+            <a href="#visual" class="top-bar-item">
+                <i class="fas fa-eye"></i>
+                Screen Reader Access
+            </a>
+            <div class="accessibility-controls">
+                    <div class="font-size-control">
+                    <button class="font-button" aria-label="Decrease font size">−</button>
+                    <button class="font-button" aria-label="Reset font size">A</button>
+                    <button class="font-button" aria-label="Increase font size">+</button>
+                </div>
+                <button class="font-button" aria-label="Reset all settings">⟲</button>
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="emblem.jpg" alt="State Emblem of India" class="emblem-image">
+                </div>
+                <div class="header-text">
+                    <h1>INFORMATION TECHNOLOGY & COMMUNICATION DEPARTMENT</h1>
+                    <p>Government of Meghalaya</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tenders</a></li>
+                <li><a href="#services">Notifications</a></li>
+                <li><a href="#projects">Forms</a></li>
+                <li><a href="#tenders">Easy Shillong</a></li>
+                <li><a href="#contact">STPI</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <button class="hamburger-btn" aria-label="More menu items">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#gallery">Photo Gallery</a>
+                    <a href="#schemes">Schemes</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#sitemap">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-container">
+            <form class="search-box">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i> Go
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+    <div class="content-wrapper">
+        <!-- Left Sidebar - About Us -->
+        <aside class="left-sidebar">
+            <div class="sidebar-card">
+                <h3>About Us</h3>
+                <div class="about-content">
+                    <p>The Department of Information Technology, Government of Meghalaya, is dedicated to implementing and overseeing all IT initiatives and policies in the state.</p>
+                    <ul class="about-links">
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#vision">Our Vision</a></li>
+                        <li><a href="#objectives">Objectives</a></li>
+                        <li><a href="#structure">Organizational Structure</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Content Area -->
+        <main class="main-content-area">
+            <div id="dynamicContent">
+                <!-- Default content -->
+                <h2>Welcome to IT Department</h2>
+                <p>Select a menu item to view its content.</p>
+            </div>
+        </main>
+
+        <!-- Right Sidebar - News -->
+        <aside class="right-sidebar">
+            <div class="sidebar-card">
+                <h3>Latest News</h3>
+                <div class="news-list">
+                    <div class="news-item">
+                        <span class="news-date">15 May 2024</span>
+                        <h4>Digital Transformation Workshop</h4>
+                        <p>Workshop on digital transformation for government officials.</p>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">12 May 2024</span>
+                        <h4>New IT Policy Announcement</h4>
+                        <p>State government announces new IT policy framework.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+            <!-- Chatbot Widget -->
+            <div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-header">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+    <div class="chatbot-content" id="chatbotContent">
+        <div class="chat-header">
+            <span class="chat-title">Government Assistant</span>
+            <button class="close-chat" id="closeChat" aria-label="Close chat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                Hello! How can I assist you today?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+        <script>
+            // Set default font size and step
+            let currentFontSize = 16;
+            const fontStep = 2;
+            const minFontSize = 12;
+            const maxFontSize = 24;
+    
+            // Get all elements that need font size changes
+            const elementsToResize = document.querySelectorAll('p, a, h1, h2, h3, h4, h5, h6, span, button');
+    
+            // Font size control functions
+            function increaseFontSize() {
+                if (currentFontSize < maxFontSize) {
+                    currentFontSize += fontStep;
+                    updateFontSize();
+                }
+            }
+    
+            function decreaseFontSize() {
+                if (currentFontSize > minFontSize) {
+                    currentFontSize -= fontStep;
+                    updateFontSize();
+                }
+            }
+    
+            function resetFontSize() {
+                currentFontSize = 16;
+                updateFontSize();
+            }
+    
+            function updateFontSize() {
+                elementsToResize.forEach(element => {
+                    element.style.fontSize = `${currentFontSize}px`;
+                });
+            }
+    
+            // Add event listeners to buttons
+            document.querySelector('.font-button:nth-child(1)').onclick = decreaseFontSize;    // Minus button
+            document.querySelector('.font-button:nth-child(2)').onclick = resetFontSize;       // A button
+            document.querySelector('.font-button:nth-child(3)').onclick = increaseFontSize;    // Plus button
+            document.querySelector('.accessibility-controls > .font-button').onclick = resetFontSize; // Reset button
+
+            // Hamburger menu functionality
+            const hamburgerBtn = document.querySelector('.hamburger-btn');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            hamburgerBtn.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Chatbot toggle functionality
+            document.addEventListener('DOMContentLoaded', () => {
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotContent = document.getElementById('chatbotContent');
+    const userInput = document.getElementById('userInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const chatMessages = document.getElementById('chatMessages');
+    const closeChat = document.getElementById('closeChat');
+
+    // Toggle chatbot
+    chatbotToggle.addEventListener('click', () => {
+        chatbotContent.classList.toggle('active');
+    });
+
+    // Close chat
+    closeChat.addEventListener('click', () => {
+        chatbotContent.classList.remove('active');
+    });
+
+    // Send message function
+    function sendUserMessage() {
+        const message = userInput.value.trim();
+        if (message) {
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('message', 'user');
+            userMessageDiv.textContent = message;
+            chatMessages.appendChild(userMessageDiv);
+
+            // Clear input
+            userInput.value = '';
+
+            // Auto scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Simulate bot response (replace with actual chatbot logic)
+            setTimeout(() => {
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('message', 'bot');
+                botMessageDiv.textContent = "Thank you for your message. How else can I help you?";
+                chatMessages.appendChild(botMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+    }
+
+    // Send message on button click
+    sendMessage.addEventListener('click', sendUserMessage);
+
+    // Send message on Enter key
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendUserMessage();
+        }
+    });
+});
+
+// Add this to your existing script section
+function loadContent(section) {
+    const dynamicContent = document.getElementById('dynamicContent');
+    
+    // Example content mapping
+    const contentMap = {
+        'home': {
+            title: 'Welcome to IT Department',
+            content: 'This is the home page content.'
+        },
+        'tenders': {
+            title: 'Current Tenders',
+            content: 'List of active tenders will appear here.'
+        },
+        'notifications': {
+            title: 'Latest Notifications',
+            content: 'Recent notifications and announcements.'
+        },
+        'forms': {
+            title: 'Download Forms',
+            content: 'Access all department-related forms here.'
+        }
+    };
+
+    const sectionContent = contentMap[section] || contentMap['home'];
+    
+    dynamicContent.innerHTML = `
+        <h2>${sectionContent.title}</h2>
+        <div class="section-content">
+            ${sectionContent.content}
+        </div>
+    `;
+}
+
+// Add click handlers to navigation links
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = e.target.getAttribute('href').replace('#', '');
+        loadContent(section);
+    });
+});
+        </script>
+</body>
+</html>
