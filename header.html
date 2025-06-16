@@ -267,8 +267,7 @@ body {
     background: #2a3b6c;
 }
 
-/* Main Content Area */
-/* Main Container Layout */
+
 .main-container {
     max-width: 1200px;
     margin: 20px auto;
@@ -372,130 +371,114 @@ body {
     padding: 30px;
 }
 
-/* Responsive Layout */
-@media (max-width: 1024px) {
-    .content-wrapper {
-        grid-template-columns: 200px 1fr 250px;
-    }
+/* Footer Styles */
+.footer {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: 50px;
 }
 
-@media (max-width: 768px) {
-    .content-wrapper {
-        grid-template-columns: 1fr;
-    }
-    
-    .left-sidebar,
-    .right-sidebar {
-        order: 2;
-    }
-    
-    .main-content-area {
-        order: 1;
-    }
-}
-/* Responsive */
-/* Update responsive styles */
-@media (max-width: 768px) {
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-    
-    .nav-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hamburger-menu {
-        margin: 10px 0;
-    }
-
-    .dropdown-menu {
-        position: static;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .search-box {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .search-input {
-        margin-bottom: 10px;
-    }
-
-    .main-container {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .content-wrapper {
-        flex-direction: column;
-    }
-
-    .left-sidebar, .right-sidebar {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
 }
 
-/* Chatbot Widget Styles */
+.footer-info {
+    margin-bottom: 25px;
+}
+
+.footer-credit, .footer-host {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 25px 0;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+}
+
+.footer-links, .footer-secondary-links {
+    margin: 20px 0;
+}
+
+.footer-links a, .footer-secondary-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0 10px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover, .footer-secondary-links a:hover {
+    opacity: 0.8;
+}
+
+.footer-update {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Dark Mode Footer Styles */
+body.dark-mode .footer {
+    background: linear-gradient(135deg, #111 0%, #333 100%);
+}
+
+/* Chatbot Styles */
 .chatbot-widget {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: auto;
-    background: none;
     z-index: 1000;
 }
 
 .chatbot-header {
-    background: #1e3c72;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    text-align: right;
 }
 
 .chatbot-toggle {
-    width: 100%;
-    height: 100%;
-    background: none;
-    border: none;
+    background: #1e3c72;
     color: white;
-    cursor: pointer;
-    font-size: 24px;
+    border: none;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-size: 24px;
+    transition: all 0.3s ease;
 }
 
 .chatbot-toggle:hover {
-    transform: scale(1.1);
+    background: #2a5298;
+    transform: scale(1.05);
 }
 
 .chatbot-content {
-    position: fixed;
+    display: none;
+    position: absolute;
     bottom: 80px;
-    right: 20px;
-    height: 400px;
+    right: 0;
     width: 300px;
-    display: none; /* This is the default state */
-    flex-direction: column;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     overflow: hidden;
 }
 
 .chatbot-content.active {
-    display: flex; /* This will show the chat when active */
+    display: block;
 }
 
 .chat-header {
@@ -508,36 +491,27 @@ body {
 }
 
 .chat-title {
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
 }
 
 .close-chat {
     background: none;
     border: none;
     color: white;
-    font-size: 18px;
     cursor: pointer;
-    padding: 5px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.close-chat:hover {
-    opacity: 1;
+    font-size: 18px;
 }
 
 .chat-messages {
-    flex-grow: 1;
-    padding: 15px;
+    height: 300px;
     overflow-y: auto;
-    background: #f8f9fa;
+    padding: 15px;
 }
 
 .message {
     margin-bottom: 10px;
-    padding: 8px 12px;
-    border-radius: 15px;
+    padding: 10px;
+    border-radius: 8px;
     max-width: 80%;
 }
 
@@ -554,15 +528,16 @@ body {
 
 .chat-input {
     display: flex;
-    padding: 10px;
+    padding: 15px;
     border-top: 1px solid #eee;
+    background: white;
 }
 
 .chat-input input {
-    flex-grow: 1;
+    flex: 1;
     padding: 8px;
     border: 1px solid #ddd;
-    border-radius: 20px;
+    border-radius: 4px;
     margin-right: 10px;
 }
 
@@ -570,15 +545,372 @@ body {
     background: #1e3c72;
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    padding: 8px 15px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .chat-input button:hover {
     background: #2a5298;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-mode .header {
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+}
+
+body.dark-mode .nav {
+    background: #121212;
+}
+
+body.dark-mode .main-content-area {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar-card {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+body.dark-mode .about-department h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .about-department p,
+body.dark-mode .about-department li {
+    color: #e0e0e0;
+}
+
+body.dark-mode .top-bar {
+    background: #000000;
+}
+
+body.dark-mode .search-box {
+    background: #2d2d2d;
+    border-color: #404040;
+}
+
+body.dark-mode .search-input {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+body.dark-mode .left-sidebar,
+body.dark-mode .right-sidebar {
+    background: #2d2d2d;
+}
+
+body.dark-mode .news-list h4 {
+    color: #ffffff;
+}
+
+body.dark-mode .news-list p {
+    color: #e0e0e0;
+}
+
+/* Responsive Layout */
+@media (max-width: 1200px) {
+    .header-content,
+    .nav-content,
+    .search-container,
+    .main-container,
+    .footer-content {
+        width: 95%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-wrapper {
+        grid-template-columns: 200px 1fr;
+        gap: 15px;
+    }
+
+    .right-sidebar {
+        display: none; /* Hide right sidebar on tablet */
+    }
+
+    .header-text h1 {
+        font-size: 24px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header Adjustments */
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .logo-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-text h1 {
+        font-size: 20px;
+    }
+
+    /* Navigation Adjustments */
+    .nav-content {
+        position: relative;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #1a2b5c;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.show {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-links a:hover {
+        background: rgba(255,255,255,0.1);
+        transform: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+        margin-left: auto;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        background: rgba(255,255,255,0.1);
+    }
+
+    .hamburger-btn::after {
+        content: 'Menu';
+        font-size: 16px;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        left: 0;
+        margin-top: 5px;
+    }
+
+    /* Top Bar Adjustments */
+    .top-bar-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .accessibility-controls {
+        width: 100%;
+        justify-content: center;
+        order: 2;
+    }
+
+    /* Content Layout */
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .left-sidebar {
+        order: 2;
+    }
+
+    .main-content-area {
+        order: 1;
+    }
+
+    /* Search Box */
+    .search-box {
+        width: 100%;
+    }
+}
+
+/* Mobile Large (576px and below) */
+@media (max-width: 576px) {
+    .header-text h1 {
+        font-size: 18px;
+    }
+
+    .top-bar {
+        padding: 5px 0;
+    }
+
+    .top-bar-item {
+        font-size: 12px;
+        padding: 2px 5px;
+    }
+
+    .footer-logos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links, 
+    .footer-secondary-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-links a, 
+    .footer-secondary-links a {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 8px 0;
+    }
+}
+
+/* Mobile Small (375px and below) */
+@media (max-width: 375px) {
+    .header-text h1 {
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar-card {
+        padding: 15px;
+    }
+
+    .main-content-area {
+        padding: 15px;
+    }
+
+    /* Chatbot Adjustments */
+    .chatbot-content {
+        width: 100%;
+        right: 0;
+        bottom: 70px;
+        border-radius: 0;
+    }
+}
+
+/* Dark Mode Responsive Adjustments */
+@media (max-width: 768px) {
+    body.dark-mode .hamburger-btn {
+        background: rgba(255,255,255,0.1);
+    }
+
+    body.dark-mode .dropdown-menu {
+        background: #222;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .top-bar,
+    .nav,
+    .search-section,
+    .chatbot-widget,
+    .footer-links,
+    .footer-secondary-links {
+        display: none;
+    }
+
+    .header,
+    .footer {
+        background: none;
+        color: black;
+    }
+
+    .content-wrapper {
+        display: block;
+    }
+
+    .main-content-area {
+        box-shadow: none;
+    }
+}
+
+/* Landscape Mode Fix */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header {
+        padding: 10px 0;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-text h1 {
+        font-size: 16px;
+    }
+
+    .chatbot-content {
+        height: 80vh;
+    }
+}
+
+.about-department {
+    max-width: 100%;
+    padding: 20px;
+}
+
+.about-department h3 {
+    color: #1e3c72;
+    margin: 25px 0 15px 0;
+    font-size: 1.3em;
+    border-bottom: 2px solid #ff6b35;
+    padding-bottom: 8px;
+}
+
+.about-department p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.about-department ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.about-department li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: #333;
 }
 </style>
 <head>
@@ -606,13 +938,17 @@ body {
                 Screen Reader Access
             </a>
             <div class="accessibility-controls">
-                    <div class="font-size-control">
+                <div class="font-size-control">
                     <button class="font-button" aria-label="Decrease font size">−</button>
                     <button class="font-button" aria-label="Reset font size">A</button>
                     <button class="font-button" aria-label="Increase font size">+</button>
                 </div>
                 <button class="font-button" aria-label="Reset all settings">⟲</button>
             </div>
+            <!-- New Dark Mode Toggle -->
+            <a href="#" id="darkModeToggle" class="top-bar-item">
+                <i class="fas fa-moon"></i> Dark Mode
+            </a>
         </div>
     </div>
     <!-- Header -->
@@ -719,7 +1055,7 @@ body {
             <!-- Chatbot Widget -->
             <div class="chatbot-widget" id="chatbotWidget">
     <div class="chatbot-header">
-        <button class="chatbot-toggle" id="chatbotToggle">
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle chat">
             <i class="fas fa-comments"></i>
         </button>
     </div>
@@ -732,12 +1068,17 @@ body {
         </div>
         <div class="chat-messages" id="chatMessages">
             <div class="message bot">
-                Hello! How can I assist you today?
+                Hello! How can I assist you today with government services?
             </div>
         </div>
         <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type your message...">
-            <button id="sendMessage">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Type your message..." 
+                aria-label="Chat message"
+            >
+            <button id="sendMessage" aria-label="Send message">
                 <i class="fas fa-paper-plane"></i>
             </button>
         </div>
@@ -809,6 +1150,7 @@ body {
     const sendMessage = document.getElementById('sendMessage');
     const chatMessages = document.getElementById('chatMessages');
     const closeChat = document.getElementById('closeChat');
+    const darkModeToggle = document.getElementById('darkModeToggle');
 
     // Toggle chatbot
     chatbotToggle.addEventListener('click', () => {
@@ -856,6 +1198,72 @@ body {
             sendUserMessage();
         }
     });
+
+    // Dark mode toggle
+    darkModeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        } else {
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        }
+    });
+});
+
+// Replace the dark mode toggle event listener in your script
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const icon = darkModeToggle.querySelector('i');
+    
+    // Check for saved dark mode preference
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    }
+
+    // Dark mode toggle click handler
+    darkModeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        } else {
+            localStorage.setItem('darkMode', null);
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    
+    // Reset to light mode on page load
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('darkMode', 'disabled');
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+
+    // Dark mode toggle click handler
+    darkModeToggle.addEventListener('click', () => {
+        const isDarkModeEnabled = document.body.classList.contains('dark-mode');
+        
+        if (!isDarkModeEnabled) {
+            // Switch to dark mode
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('darkMode', 'enabled');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        } else {
+            // Switch to light mode
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('darkMode', 'disabled');
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        }
+    });
 });
 
 // Add this to your existing script section
@@ -865,8 +1273,25 @@ function loadContent(section) {
     // Example content mapping
     const contentMap = {
         'home': {
-            title: 'Welcome to IT Department',
-            content: 'This is the home page content.'
+            title: 'Welcome to Department of Information Technology',
+            content: `
+                <div class="about-department">
+                    <p>The Government of Meghalaya created the Department of Information Technology (D.I.T.) in May, 2001 with a view of making available the benefits of Information and Communication Technology to all citizens, especially the poor and disadvantaged section of the population, businesses and Government employees and all other stakeholders.</p>
+                    
+                    <p>Government of Meghalaya through I.T. Department plans to realise its vision of transforming the state of Meghalaya into one of the most preferred and leading destinations for investments in I.T./I.T.E.S., high-end technology and electronics industry in East India or NorthEast Region.</p>
+                    
+                    <h3>Vision</h3>
+                    <p>To effectively leverage I.C.T. (Information and Communication Technology) for the State's overall development and focus on I.T. dissemination and usage as a crucial engine of economic growth and as a tool for increasing productivity, effectiveness, speed and transparency in governance leading to improved quality of life for the common man, businesses and internal Governmental agencies.</p>
+                    
+                    <h3>Mission /Major Objectives and Goals</h3>
+                    <ul>
+                        <li>Leverage I.C.T. to make G2C (Government to Citizens), G2B (Government to Business), G2E (Government to Employee), G2G (Government to Government) services easily accessible to the common man and to ensure efficiency, transparency and reliability of such services at affordable costs.</li>
+                        <li>Stimulate investment and growth in the I.T./ I.T.E.S. and high-end technology Sector through suitable policy initiatives</li>
+                        <li>Bridging the digital divide by I.C.T. dissemination among the state citizenry</li>
+                        <li>Developing Human Resources for I.T. and I.T.E.S.</li>
+                    </ul>
+                </div>
+            `
         },
         'tenders': {
             title: 'Current Tenders',
@@ -892,7 +1317,13 @@ function loadContent(section) {
     `;
 }
 
-// Add click handlers to navigation links
+// Load home content by default when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    loadContent('home'); // This will load the home content automatically
+    
+    // ... existing DOMContentLoaded event listeners ...
+});
+
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -901,5 +1332,38 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
         </script>
-</body>
+
+        <!-- Add this before closing body tag -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-info">
+            <p class="footer-credit">Designed and Developed by National Informatics Centre</p>
+            <p class="footer-host">Contents Hosted, Maintained and Updated by Information Technology & Communication Department, Government of Meghalaya</p>
+        </div>
+        
+        <div class="footer-logos">
+            <img src="meghalaya-logo.jpg" alt="Government of Meghalaya" class="footer-logo">
+            <img src="india-portal.jpg" alt="India Portal" class="footer-logo">
+        </div>
+        
+        <div class="footer-links">
+            <a href="/help">Help</a> |
+            <a href="/accessibility">Accessibility Statement</a> |
+            <a href="/external-links">External Links</a> |
+            <a href="/disclaimer">Disclaimer</a> |
+            <a href="/copyright">Copyright</a> |
+            <a href="/hyperlinking">Hyperlinking Policy</a>
+        </div>
+        
+        <div class="footer-secondary-links">
+            <a href="/terms">Terms and Conditions</a> |
+            <a href="/privacy">Privacy Policy</a>
+        </div>
+        
+        <div class="footer-update">
+            <p>Last updated on June 12, 2025</p>
+        </div>
+    </div>
+</footer>
+    </body>
 </html>
