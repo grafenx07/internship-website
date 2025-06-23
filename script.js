@@ -1,5 +1,4 @@
-
-            // Set default font size and step
+// Set default font size and step
             let currentFontSize = 16;
             const fontStep = 2;
             const minFontSize = 12;
@@ -244,4 +243,81 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         loadContent(section);
     });
 });
-        
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sliderContainer = document.querySelector('.slider-container');
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.querySelector('.dots-container');
+    const prevButton = document.querySelector('.slider-btn.prev');
+    const nextButton = document.querySelector('.slider-btn.next');
+    const pauseButton = document.querySelector('.pause-btn');
+    
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    let isPlaying = true;
+    let slideInterval;
+
+    // Initialize slideshow state
+    function initSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000);
+        pauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+    }
+
+    function updateDots() {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        goToSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        goToSlide(currentSlide);
+    }
+
+    function toggleSlideshow() {
+        if (isPlaying) {
+            // Pause the slideshow
+            clearInterval(slideInterval);
+            pauseButton.innerHTML = '<i class="fas fa-play"></i>';
+            isPlaying = false;
+        } else {
+            // Resume the slideshow
+            slideInterval = setInterval(nextSlide, 5000);
+            pauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+            isPlaying = true;
+        }
+    }
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    // Event listeners
+    prevButton.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
+    pauseButton.addEventListener('click', toggleSlideshow);
+
+    // Initialize the slideshow
+    initSlideshow();
+
+    // Remove hover pause functionality to avoid conflicts
+    // with manual pause button
+});
+

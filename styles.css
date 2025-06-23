@@ -1,5 +1,4 @@
-
-    * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -265,6 +264,123 @@ body {
     background: #2a3b6c;
 }
 
+.slider-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 400px;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+}
+
+.slide-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.slide-content p {
+    font-size: 16px;
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px; /* Changed from left: 50% */
+    transform: none; /* Removed translateX(-50%) */
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn.prev {
+    left: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+.slider-btn.next {
+    right: 20px;
+    border-radius: 4px 0 0 4px;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.pause-btn {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    margin-right: 20px; /* Add some spacing from the right edge */
+}
+
+.pause-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: white;
+}
 
 .main-container {
     max-width: 1200px;
@@ -759,6 +875,14 @@ body.dark-mode .news-list p {
     .search-box {
         width: 100%;
     }
+
+    .slider-controls {
+        right: 10px; /* Adjust for smaller screens */
+    }
+    
+    .pause-btn {
+        margin-right: 10px;
+    }
 }
 
 /* Mobile Large (576px and below) */
@@ -910,3 +1034,7 @@ body.dark-mode .news-list p {
     line-height: 1.5;
     color: #333;
 }
+
+
+
+
